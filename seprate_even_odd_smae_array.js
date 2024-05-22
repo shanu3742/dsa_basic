@@ -18,3 +18,35 @@ function separateEvenOdd(arr) {
 }
 
 console.log(separateEvenOdd([ 2, 3, 4, 5, 6, 7, 8, 9]));
+
+
+
+//two pointer approach
+
+const  separateEvenOddNumber = (arr) =>  {
+
+    let left = 0;
+    let right = arr.length - 1;
+    while(left < right){
+
+        while(arr[left] % 2 === 0 && left < right){
+            left++;
+        }
+
+        while(arr[right] % 2 !== 0 && left < right){
+            right--;
+        }
+        
+        if(left < right){
+            let temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+    
+    return arr;
+}
+
+console.log(separateEvenOddNumber([ 2, 3, 4, 5, 6, 7, 8, 9]));
