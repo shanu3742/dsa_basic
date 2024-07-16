@@ -21,3 +21,5 @@ const selectionSort= (arr) => {
 }
 
 console.log(selectionSort([5,1,6,2,20]))
+//time complixity worst case O(n^2)
+//time complexity best case o(nlogn)
