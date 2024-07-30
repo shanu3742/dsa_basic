@@ -1,3 +1,8 @@
+/**
+ * first in last out 
+ * 
+ */
+
 class StackList {
     list =[];
     front=0;
