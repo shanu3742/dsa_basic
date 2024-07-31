@@ -1,30 +1,54 @@
 class   Queue {
 
     queueList= [];
+    queueFixedSize=0;
     size=0;
 
-    constructor(queuelist){
+    constructor(queuelist,queueFixedSize){
+        this.queueFixedSize=queueFixedSize;
         if(queuelist){
             if(Array.isArray(queuelist)){
-                this.queueList= [...queuelist]
                 let i=0;
                 let upperBoundies= i+1;
                 let queueSize=0;
                 //to get the size of the queue
                 for(i= 0;i<upperBoundies;i++){
-                    if(this.queueList[i]===undefined){
+                   
+                    if(queuelist[i]===undefined){
+                        
                          break;
                     }else{
+                      
                         queueSize = queueSize+1;
                         upperBoundies=upperBoundies+1;
                     
                     }
 
                 }
-                this.size = queueSize;
+                
+
+                if(queueSize>this.queueFixedSize){
+                    this.size=0;
+                    this.queueList=[];
+                    throw new Error("Queue size is greater than the fixed size")
+
+                }else{
+                    this.size = queueSize;
+                    this.queueList= [...queuelist]
+                }
+               
+               
             }else{
-                this.queueList = [queuelist];
-                this.size = 1
+                if(this.queueFixedSize<1){
+                    this.size=0;
+                    this.queueList=[];
+                    throw new Error("Queue size is greater than the fixed size")
+
+                }else{
+                    this.queueList = [queuelist];
+                    this.size = 1
+                }
+                
             }
             
         }else{
@@ -35,8 +59,14 @@ class   Queue {
 
     equeue(item){
         // this.queueList.push(item);
-        this.size= this.size+1;
-        this.queueList[this.size-1]=item;
+        if(this.queueFixedSize<this.size){
+            throw new Error("Queue size is greater than the fixed size")
+
+        }else{
+            this.size= this.size+1;
+            this.queueList[this.size-1]=item;
+        }
+
     }
     dequeue(){
         if(this.size<=0){
@@ -70,11 +100,19 @@ class   Queue {
    }
 
 }
-const queue = new Queue([7,18,11,100]);
-console.log(queue.dequeue())
+const queue = new Queue([7,18,11,100],6);
 console.log(queue.print())
+queue.equeue(1000)
+console.log(queue.print())
+queue.equeue(1001)
+console.log(queue.print())
+queue.equeue(2001)
+console.log(queue.print())
+// queue.equeue(23001)
+// console.log(queue.dequeue())
+// console.log(queue.print())
 // console.log(queue.dequeue())
 // console.log(queue.dequeue())
 // console.log(queue.dequeue())
-console.log(queue.peek())
-console.log(queue.isEmpty())
+// console.log(queue.peek())
+// console.log(queue.isEmpty())

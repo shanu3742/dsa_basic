@@ -2,16 +2,27 @@ class OptimizedQueue {
     queue={};
     front=0;
     rare=0;
-    constructor(item){ 
+    queueSize=0;
+    constructor(item,queueSize){ 
         if(item){
             this.queue[this.rare]= item;
             this.rare= this.rare+1;
+        }
+        if(queueSize){
+            this.queueSize=queueSize;
+        
+        }else{
+            this.queueSize=10;
         }
 
     }
 
     enqueue(item){
-        if(item){
+        let size= this.rare-this.front;
+        if(size >= this.queueSize){
+          console.log("Queue is full");
+        }
+        if(item && size < this.queueSize){
             this.queue[this.rare]= item;
             this.rare= this.rare+1;
         }
@@ -47,12 +58,19 @@ class OptimizedQueue {
     }
 }
 
-let queue= new OptimizedQueue(1);
+let queue= new OptimizedQueue(1,4);
 queue.print()
 queue.enqueue(12);
 queue.enqueue(13);
 queue.print()
 queue.dequeue()
+queue.enqueue(14);
+queue.print()
+queue.enqueue(15);
+queue.print()
+queue.enqueue(16);
+queue.print()
+queue.enqueue(17);
 queue.print()
 console.log(queue.peek())
 console.log(queue.size())
