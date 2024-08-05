@@ -80,6 +80,67 @@ class LinkedList {
 
         }
 
+        removeFrom(index){
+            if(this.isEmpty()){
+                return null
+            }
+            if(index<0 || index>this.size){
+                console.warn(`invalid index index must be in the range of  0 To ${this.size}`)
+                return null
+            }else{
+
+                // if index ===0 remove first head and make the as a new head
+                if(index===0){
+                    let currentHead = this.head;
+                    this.head = this.head.next;
+                    this.size= this.size-1;
+                    return currentHead.value;
+                }else{
+                    //get hold of the delted node 
+                    let currentNode =this.head;
+                    for(let i =0; i<index-1; i++){
+                        currentNode= currentNode.next;
+                    }
+                    let removedNode= currentNode.next
+                    currentNode.next =  removedNode.next;
+                    this.size= this.size-1;
+                    return removedNode.value
+                    
+                }
+                
+            }
+
+        }
+
+        removeValue(value){
+            if(this.isEmpty()){
+                return null
+            }
+
+            //check for first item
+            if(this.head.value ===value){
+                this.head= this.head.next;
+                this.size= this.size-1
+                return value;
+            }else{
+                //iterate through for loop
+                //hold the  value just before the search and deleted item
+                let preHead = this.head;
+                while(preHead.next.value  !== value  && preHead.next !==null){
+                  preHead= preHead.next;
+                }
+
+                if(preHead.next === null){
+                    return null
+                }else{
+                    let removeNode = preHead.next;
+                    preHead.next= removeNode.next;
+                    this.size= this.size-1;
+                    return value;
+                }
+            }
+        }
+
         print(){
         
         // recursive function till we will not reach 
@@ -129,4 +190,8 @@ list.prepend(20);
 list.append('sks')
 list.insert('ADD BEFORE KUMAR',1)
 list.insert('add before shanu',5)
+console.log(list.print())
+console.log(list.removeFrom(2))
+console.log(list.print())
+console.log(list.removeValue('bhanu'))
 console.log(list.print())
