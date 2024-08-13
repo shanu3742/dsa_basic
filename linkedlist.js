@@ -71,7 +71,7 @@ class LinkedList {
                 this.tail = null;
             }else{
                 let prev = this.head;
-                while(prev.next !== this.tail){
+                while(prev?.next?.next !==null){
                     prev = prev.next;
                 }
                 prev.next = null;
@@ -236,11 +236,16 @@ list.prepend('bhanu');
 list.prepend('kumar');
 console.log(list.head);
 list.prepend(20);
-list.append('sks')
-list.insert('ADD BEFORE KUMAR',1)
-list.insert('add before shanu',5)
+list.append('sks');
+list.insert('ADD BEFORE KUMAR',1);
+list.insert('add before shanu',5);
+console.log(list.print());
+console.log(list.removeFrom(2));
+console.log(list.print());
+// console.log(list.removeValue('bhanu'));
+list.removeFromEnd();
 console.log(list.print())
-console.log(list.removeFrom(2))
+list.removeFromEnd();
 console.log(list.print())
-console.log(list.removeValue('bhanu'))
+list.removeFromEnd();
 console.log(list.print())
