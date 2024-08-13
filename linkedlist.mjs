@@ -261,25 +261,28 @@ class LinkedList {
 }
 
 
-const list = new LinkedList();
-list.prepend('shanu');
-list.prepend('bhanu');
-list.prepend('kumar');
-console.log(list.head);
-list.prepend(20);
-list.append('sks');
-list.insert('ADD BEFORE KUMAR',1);
-list.insert('add before shanu',5);
-console.log(list.print());
-console.log(list.removeFrom(2));
-console.log(list.print());
-// console.log(list.removeValue('bhanu'));
-list.removeFromEnd();
-console.log(list.print())
-list.removeFromEnd();
-console.log(list.print())
-list.removeFromEnd();
-console.log(list.print())
-console.log(list.search('sks'))
-list.revrse()
-console.log(list.print())
+// const list = new LinkedList();
+// list.prepend('shanu');
+// list.prepend('bhanu');
+// list.prepend('kumar');
+// console.log(list.head);
+// list.prepend(20);
+// list.append('sks');
+// list.insert('ADD BEFORE KUMAR',1);
+// list.insert('add before shanu',5);
+// console.log(list.print());
+// console.log(list.removeFrom(2));
+// console.log(list.print());
+// // console.log(list.removeValue('bhanu'));
+// list.removeFromEnd();
+// console.log(list.print())
+// list.removeFromEnd();
+// console.log(list.print())
+// list.removeFromEnd();
+// console.log(list.print())
+// console.log(list.search('sks'))
+// list.revrse()
+// console.log(list.print())
+
+
+export  {LinkedList}
