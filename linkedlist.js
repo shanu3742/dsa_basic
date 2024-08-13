@@ -2,6 +2,7 @@ class Node {
     constructor(data) {
         this.value = data;
         this.next = null;
+        this.tail = null;
     }
 
 
@@ -20,8 +21,11 @@ class LinkedList {
         }
         prepend(data){
             if(this.isEmpty()){
-                this.head= new Node(data);
+                let node = new Node(data)
+                this.head= node;
+                this.tail = node; 
                 this.size= this.size+1;
+
             }else{
                 //store the current head 
                 let currentHead = this.head;
@@ -31,6 +35,51 @@ class LinkedList {
                 this.head.next = currentHead;
                 this.size = this.size+1;
             }
+        }
+        appendUsingTailOverview(data){
+
+            const node = new Node(data);
+            if(this.isEmpty){
+                this.head = node;
+                this.tail = node;
+            }else{
+                //first  assign the 
+                this.tail.next = node;
+                this.tail = node;
+            }
+            this.size = this.size +1;
+
+
+        }
+        removeFromFront(){
+            if(this.isEmpty()){
+                return null
+            }
+            const currentNode = this.head;
+            this.head = this.head.next;
+            this.size = this.size-1;
+            return currentNode.value;
+        }
+
+        removeFromEnd(){
+            if(this.isEmpty()){
+                return null;
+            }
+            let  value = this.tail.value;
+            if(this.size ===1){
+                this.head =null;
+                this.tail = null;
+            }else{
+                let prev = this.head;
+                while(prev.next !== this.tail){
+                    prev = prev.next;
+                }
+                prev.next = null;
+                this.tail = prev;
+                this.size = this.size-1;
+                return value;
+            }
+
         }
 
         append(data){
