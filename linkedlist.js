@@ -141,6 +141,37 @@ class LinkedList {
             }
         }
 
+        search(value){
+            let indexOf = -1
+            if(this.isEmpty()){
+                return indexOf;
+            }
+
+            let i =0;
+            let current= this.head;
+            while(current){
+                if(current.value===value){
+                    return i;
+                }
+                current= current.next;
+                i=i+1;
+            }
+            return indexOf
+        }
+
+
+       revrse(){
+        let current= this.head;
+        let prev= null
+        while(current?.next){
+          let next = current.next;
+           current.next= prev;
+           prev= current;
+           current =next
+        }
+        this.head =  prev;
+       }
+
         print(){
         
         // recursive function till we will not reach 
@@ -194,4 +225,7 @@ console.log(list.print())
 console.log(list.removeFrom(2))
 console.log(list.print())
 console.log(list.removeValue('bhanu'))
+console.log(list.print())
+console.log(list.search('sks'))
+list.revrse()
 console.log(list.print())
