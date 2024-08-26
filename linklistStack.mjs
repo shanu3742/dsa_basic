@@ -32,12 +32,6 @@ class LinklistStack {
     print(){
         return this.stackData.print()
     }
-       
-
-
-
-            
-
 
 }
 
