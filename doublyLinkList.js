@@ -100,7 +100,37 @@ class DoublyLinkList {
 
       this.size= this.size+1;
     }
+
+    findIndex(value){
+        if(this.getSize() ===0){
+            return -1;
+        }
+        if(this.getSize() ===1){
+            if(this.head.value ===value){
+                return 0
+            }else{
+                return -1
+            }
+        }else{
+
+            let index=0;
+            let currentHead = this.head;
+            while(currentHead){
+                if(currentHead.value ===value){
+                    return index;
+                }else{
+                    currentHead = currentHead.next;
+                    index= index+1;
+                }
+            }
+        }
+
+        return -1
+
+    }
     
+
+
     removeFromFront(){
         if(this.isEmpty()){
             return null 
@@ -133,6 +163,8 @@ class DoublyLinkList {
         return value;
     }
 
+
+    
     print(){
         if(this.isEmpty()){
             return 'Empty Linked List'
@@ -160,6 +192,7 @@ class DoublyLinkList {
 }
 const doublyLinkList = new DoublyLinkList();
 doublyLinkList.prepend(3);
+doublyLinkList.prepend(25);
 doublyLinkList.prepend(4);
 console.log(doublyLinkList.print())
 doublyLinkList.append(1)
@@ -179,7 +212,10 @@ console.log(doublyLinkList.getSize())
 doublyLinkList.insert(303,0);
 console.log(doublyLinkList.print())
 console.log(doublyLinkList.getSize());
-doublyLinkList.insert(1001,5);
+// doublyLinkList.insert(1001,5);
+console.log('index of 101',doublyLinkList.findIndex(101))
+console.log('index of 3',doublyLinkList.findIndex(3))
+console.log('index of 1500',doublyLinkList.findIndex(1500))
 
 // console.log()
 //add at specific index
