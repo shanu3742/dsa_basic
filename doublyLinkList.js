@@ -128,4 +128,6 @@ console.log(doublyLinkList.print())
 console.log(doublyLinkList.removeFromEnd())
 console.log(doublyLinkList.print())
 
-
+//add at specific index
+//remove at specific index
+//search
