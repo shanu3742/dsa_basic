@@ -163,7 +163,27 @@ class DoublyLinkList {
         return value;
     }
 
+    removeFrom(index){
+        if(index===0){
+           return this.removeFromFront()
+        }
+        if(index===this.getSize()-1){
+            return this.removeFromEnd()
+        }
+       
+        let currentIndex=0;
+        let currentHead = this.head;
+        while(currentIndex<index-1){
+            currentHead = currentHead.next;
+            currentIndex =  currentIndex+1;
+        }
+        let value= currentHead.next.value;
+        currentHead.next = currentHead.next.next;
+        currentHead.next.next.prev= currentHead;
+        return value;
 
+
+    }
     
     print(){
         if(this.isEmpty()){
@@ -216,6 +236,9 @@ console.log(doublyLinkList.getSize());
 console.log('index of 101',doublyLinkList.findIndex(101))
 console.log('index of 3',doublyLinkList.findIndex(3))
 console.log('index of 1500',doublyLinkList.findIndex(1500))
+
+console.log(doublyLinkList.removeFrom(1))
+console.log(doublyLinkList.print());
 
 // console.log()
 //add at specific index
