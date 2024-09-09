@@ -245,3 +245,8 @@ console.log(doublyLinkList.print());
 //remove at specific index
 //search
 
+let r= [1,3,4];
+
+for(let key in r){
+    console.log(r[key])
+}
