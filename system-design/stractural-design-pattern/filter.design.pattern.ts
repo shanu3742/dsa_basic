@@ -116,7 +116,6 @@ let criteriaThree = new CriteriaSingle();
 let criteriaFour = new CriteriaMarried();
 let criteriaFive = new AndCriteria(criteriaOne,criteriaThree);
 let criteriaSix = new OrCriteria(criteriaOne,criteriaFour);
-
 let maleUser = criteriaOne.meetCriteria(userList);
 let femaleUser = criteriaTwo.meetCriteria(userList);
 let single = criteriaThree.meetCriteria(userList);
