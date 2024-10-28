@@ -2,23 +2,28 @@ class Person {
   private  name:string;
   private  age:number;
   private  nationality:string;
-  private  color:SkinType;  
+  private  color:SkinType; 
+  private isManager=false;
+  private role:roleType='permanent';
     constructor(builder:PersonI){
        this.name = builder.name;
        this.age = builder.age;
        this.nationality = builder.nationality;
        this.color = builder.color;
+       this.isManager = builder.isManager;
+       this.role = builder.role;
+    }
+    getWelcomeMessage(){
+        return `Hi ${this.name} Welcome to the playground`
     }
 
 }
 
-
-
 class PersonBuilder{
     private name:string;
     private age:number;
-    private color:SkinType;
-    private nationality:string;
+    private color!:SkinType;
+    private nationality!:string;
     private isManager=false;
     private role:roleType='permanent';
     constructor(name:string,age:number){
@@ -54,6 +59,9 @@ interface PersonI {
     age:number;
     nationality:string;
     color:SkinType;
+    isManager:boolean;
+    role:roleType;
+
 } 
 type SkinType = 'white'|'black'|'brown'|'yellowish'
 type roleType = 'permanent'| 'temporary'
@@ -64,4 +72,6 @@ let personOne = new PersonBuilder('shanu',24)
                             .setNationality('indian')
                             .setrole('permanent')
                             .skinType('yellowish')
+                            .build();
 console.log('first person details',personOne)
+console.log(personOne.getWelcomeMessage())
