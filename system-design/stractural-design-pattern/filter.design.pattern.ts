@@ -1,5 +1,5 @@
 //filter design pattern
-class Person implements onPersonInit {
+class Person implements IPerson {
     public name:string;
     public age:number;
     public sex:SexType;
@@ -18,7 +18,7 @@ class Person implements onPersonInit {
         return this.sex
     }
 }
-interface onPersonInit {
+interface IPerson {
     name:string;
     age:number;
     sex:SexType;
@@ -29,7 +29,7 @@ interface onPersonInit {
 type MaritalStatusType = "single" | 'married';
 type SexType = 'Male' | 'Female' | 'Other';
 
-const userList:onPersonInit[] = []
+const userList:IPerson[] = []
 let userOne = new Person('satayam',25,'Male','married');
 let userTwo = new Person('Joyati',23,'Female','married');
 let userThree = new Person('Khushboo',19,'Female','single');
@@ -42,23 +42,23 @@ userList.push(userFour);
 
 
 class CriteriaMale implements Criteria { 
-    meetCriteria(personList:onPersonInit[]){
+    meetCriteria(personList:IPerson[]){
       return personList.filter((d) => d.getSex() ==='Male')
     };
 }
 class CriteriaFemale implements Criteria { 
-    meetCriteria(personList:onPersonInit[]){
+    meetCriteria(personList:IPerson[]){
       return personList.filter((d) => d.getSex() ==='Female')
     };
 }
 
 class CriteriaSingle implements Criteria {
-    meetCriteria(personList:onPersonInit[]){
+    meetCriteria(personList:IPerson[]){
         return personList.filter((d) => d.getMaritalStatus() ==='single')
       };
 }
 class CriteriaMarried implements Criteria {
-    meetCriteria(personList:onPersonInit[]){
+    meetCriteria(personList:IPerson[]){
         return personList.filter((d) => d.getMaritalStatus() ==='married')
       };
 }
@@ -70,7 +70,7 @@ class AndCriteria implements Criteria {
         this.criteriaOne= criteriaOne;
         this.criteriaTwo= criteriaTwo;
     }
-    meetCriteria(personList:onPersonInit[]){
+    meetCriteria(personList:IPerson[]){
         let filterUser = this.criteriaOne.meetCriteria(personList);
         return this.criteriaTwo.meetCriteria(filterUser);
     };
@@ -85,7 +85,7 @@ class OrCriteria implements Criteria {
         this.criteriaTwo = criteriaTwo;
     }
 
-    meetCriteria(personList: onPersonInit[]): onPersonInit[] {
+    meetCriteria(personList: IPerson[]): IPerson[] {
         let firstCriteriaUsers = this.criteriaOne.meetCriteria(personList);
         let secondCriteriaUsers = this.criteriaTwo.meetCriteria(personList);
 
@@ -104,7 +104,7 @@ class OrCriteria implements Criteria {
 
 
 interface Criteria {
-    meetCriteria:(d:onPersonInit[]) => onPersonInit[]
+    meetCriteria:(d:IPerson[]) => IPerson[]
 }
 
 
