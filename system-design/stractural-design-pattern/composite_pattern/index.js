@@ -17,4 +17,5 @@ let combine_all = new CatalogGroup('order_list',[unique_item,food_items,group_sh
 
 
 console.log('total item price', combine_all.total);
+console.log(combine_all)
 combine_all.print()
